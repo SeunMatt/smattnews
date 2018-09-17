@@ -28,7 +28,7 @@ public class V1_1__Users implements SpringJdbcMigration {
                 "  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
                 "  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP , " +
                 "  abolished BOOLEAN DEFAULT FALSE, " +
-                "  abolished_at TIMESTAMP DEFAULT NULL, " +
+                "  abolished_at DATETIME DEFAULT NULL, " +
                 "  PRIMARY KEY (id), " +
                 "  UNIQUE (email), " +
                 "  UNIQUE (id_string), " +

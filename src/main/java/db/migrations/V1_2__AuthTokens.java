@@ -24,7 +24,7 @@ public class V1_2__AuthTokens implements SpringJdbcMigration {
                 " created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
                 " updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, " +
                 " abolished BOOLEAN DEFAULT FALSE, " +
-                " abolished_at TIMESTAMP DEFAULT NULL, " +
+                " abolished_at DATETIME DEFAULT NULL, " +
                 " PRIMARY KEY (id), " +
                 " UNIQUE (id_string), " +
                 " UNIQUE (token), " +
