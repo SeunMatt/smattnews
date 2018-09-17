@@ -1,0 +1,1 @@
+web: java -jar target/smattnews-1.0-SNAPSHOT.jar

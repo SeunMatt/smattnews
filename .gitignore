@@ -1,0 +1,5 @@
+
+/.idea/
+/target/
+/smattnews.iml
+/src/main/resources/application-local.properties
