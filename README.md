@@ -41,7 +41,7 @@ Then run from the root directory of the project:
  
  **Any request to a secure endpoint that does not supply the Authentication header with the correct token will be deemed unauthenticated**
   
-  All routes in (*) requires Authentication token.
+  All routes with asterisks (*) requires Authentication token.
  
  Content Negotiation and Response Format
  ----------------------------------------
@@ -175,8 +175,8 @@ Response:
 }
 ```
 
-\* GET`/app/users` - Secure Route
--------------------------------
+\* GET`/app/users`
+-------------------
 This will list all the registered users on the system. It supports limit and offset keys for pagination e.g. `/app/users?limit=5&offset=1` will return skip the first five results and return max of five results
 
 Response:
