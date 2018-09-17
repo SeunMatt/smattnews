@@ -10,27 +10,38 @@ Response Format
 
 All API response has a `status` key, in addition to standard HTTP Status Codes, that'll report if the operation is successful or not
  
+Running Locally
+===============
+To run this app locally, clone the repo, create a local MySQL database and 
+
+configure the database connection in   `application.properties`
+
+Then run from the root directory of the project:
+
+`./mvnw clean && mvn compile && mvn package && java -jar "./target/smattnews-1.0-SNAPSHOT.jar"`
 
  API Doc
  =======
  
- BaseURL on Heroku:
- BaseURL on localhost: `http://localhost:9000`
+ BaseURL on Heroku: `https://smattnews.herokuapp.com/`
+ 
+ BaseURL on localhost: `http://localhost:9000/`
  
  All other URLs mentioned below are relative to the baseURL stated above. To test on Heroku, use the Heroku BaseURL otherwise, use the one for localhost.
  
  Authentication
  ---------------
- The authentication flow requires a call to the login endpoint with email and password. 
+ The authentication flow requires a call to the `/login` endpoint with email and password. 
  
  If successful, the response will contain **token** which should be included in the header
   
  of subsequent request as:
   
- **Authorization: token**
+ **Authentication: token** e.g. `Authentication: taA0o6ASv3vp8yO`
  
- **Any request to a secured endpoint that does not supply the Authorization header with the correct token will be deemed unauthenticated**
+ **Any request to a secure endpoint that does not supply the Authentication header with the correct token will be deemed unauthenticated**
   
+  All routes in (*) requires Authentication token.
  
  Content Negotiation and Response Format
  ----------------------------------------
@@ -44,13 +55,13 @@ All API response has a `status` key, in addition to standard HTTP Status Codes, 
  
  `Accept: application/json`
  
- **NOTE:** All `POST`, `PATCH` AND `DELETE` requests require the content type to be `application/json`
- and not any otherwise. 
+ **NOTE:** All `POST`, `PATCH` AND `DELETE` requests require the `Content-Type` to be `application/json`
+ and not `formdata` or any other.
  
  Below is a list of available endpoints, their HTTP Method, Request Parameters and Sample success response.
  
  GET `/`
-  ------
+ ------
   The home url will give result like this:
   
   ```json
@@ -164,8 +175,8 @@ Response:
 }
 ```
 
-GET`/app/users`
----------------
+\* GET`/app/users` - Secure Route
+-------------------------------
 This will list all the registered users on the system. It supports limit and offset keys for pagination e.g. `/app/users?limit=5&offset=1` will return skip the first five results and return max of five results
 
 Response:
@@ -199,8 +210,8 @@ Response:
 }
 ```
 
-POST `app/post`
----------------
+\* POST `app/post`
+-------------------
 Create a new post.
 
 Request Param:
@@ -225,7 +236,7 @@ Response:
 }
 ```
 
-PATCH `/app/post/{id}` e.g. `/app/post/9Z0IDJYHWX`
+\* PATCH `/app/post/{id}` e.g. `/app/post/9Z0IDJYHWX`
 --------------------------------------------------
 This will update a post whose id is specified in the URL.
 
@@ -243,7 +254,7 @@ Response:
 ```
   
   
-DELETE `/app/post/{id}` e.g. `/app/post/FA2HIEIOYO` 
+\* DELETE `/app/post/{id}` e.g. `/app/post/FA2HIEIOYO` 
 ----------------------------------------------------
  This will delete a post whose id is specified in the URL. 
  
