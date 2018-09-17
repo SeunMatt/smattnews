@@ -190,6 +190,7 @@ public class PostService {
 
     /**
      * This will get just the details of a post
+     * using the ID or URL
      * @return Map
      */
     public Map<String, Object> postDetails(String postId) {
@@ -199,7 +200,7 @@ public class PostService {
         Query postsQuery = entityManager.createNativeQuery("SELECT p.id_string as id, p.title, p.post, p.url, p.tags, " +
                 "p.created_at, p.updated_at, CONCAT(u.first_name, ' ',u.last_name) as author FROM posts p " +
                 "JOIN users u ON p.id_user = u.id" +
-                " WHERE p.id_string = '" + postId + "'")
+                " WHERE p.id_string = '" + postId + "' OR p.url = '" + postId + "'")
                 .unwrap(org.hibernate.query.Query.class)
                 .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
 

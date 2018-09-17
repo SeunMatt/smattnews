@@ -106,9 +106,9 @@ Then run from the root directory of the project:
 }
 ```
   
-  GET `/news/{id}` e.g. `/news/HFVVLJKAYS`
-  ----------------------------------------
-  Return the details of a single news article:
+  GET `/news/{id}` e.g. `/news/HFVVLJKAYS` || `/news/{url}` e.g. `/news/smattnews-sample-two`
+  -------------------------------------------------------------------------------------------
+  Return the details of a single news article. The article url or id can be supplied:
   
   ```json
 {
